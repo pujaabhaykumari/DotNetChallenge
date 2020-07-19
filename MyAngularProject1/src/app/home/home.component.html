@@ -1,0 +1,51 @@
+﻿<div class="card mt-4">
+    <h4 class="card-header">Add Temperature and HeartRate</h4>
+    <div class="card-body">
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+
+        <form [formGroup]="VitalsForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="Temperature">Temperature</label>
+                <input type="number" formControlName="Temperature" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Temperature.errors }" />
+                <div *ngIf="submitted && f.Temperature.errors" class="invalid-feedback">
+                    <div *ngIf="f.Temperature.errors.required">Temperature is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="HeartRate">HeartRate</label>
+                <input type="number" formControlName="HeartRate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HeartRate.errors }" />
+                <div *ngIf="submitted && f.HeartRate.errors" class="invalid-feedback">
+                    <div *ngIf="f.HeartRate.errors.required">HeartRate is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="BusinessUnitId">BusinessUnitId</label>
+                <input type="text" formControlName="BusinessUnitId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.BusinessUnitId.errors }" />
+                <div *ngIf="submitted && f.BusinessUnitId.errors" class="invalid-feedback">
+                    <div *ngIf="f.BusinessUnitId.errors.required">BusinessUnitId is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DeviceId">DeviceId</label>
+                <input type="text" formControlName="DeviceId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.DeviceId.errors }" />
+                <div *ngIf="submitted && f.DeviceId.errors" class="invalid-feedback">
+                    <div *ngIf="f.DeviceId.errors.required">DeviceId is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Add
+            </button>
+
+            <button  class="btn btn-primary" (click)="showView()" style="margin-left: 10px;">
+           
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                View
+            </button>
+            </div>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+        
+    </div>
+</div>
